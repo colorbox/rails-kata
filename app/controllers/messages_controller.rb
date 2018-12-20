@@ -24,7 +24,22 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
+    byebug
+    pp"-----------"
+    pp message_params
+    pp"-----------"
+
     @message = Message.new(message_params)
+    pp @message
+    pp"-----------"
+    pp message_params[:content]
+
+    byebug
+    pp"3"
+    @message.content = message_params[:content]
+    pp @message
+    pp"-----------"
+
 
     respond_to do |format|
       if @message.save
@@ -69,6 +84,6 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
-      params.fetch(:message, {})
+      params.fetch(:message).permit(:title, :content)
     end
 end
