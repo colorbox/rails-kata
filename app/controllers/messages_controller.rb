@@ -24,23 +24,10 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    byebug
-    pp"-----------"
-    pp message_params
-    pp"-----------"
-
     @message = Message.new(message_params)
-    pp @message
-    pp"-----------"
-    pp message_params[:content]
 
-    byebug
-    pp"3"
-    @message.content = message_params[:content]
-    pp @message
-    pp"-----------"
-
-
+    # activerecord/lib/active_record/attribute_assignment.rb
+    # が怪しい
     respond_to do |format|
       if @message.save
         format.html { redirect_to @message, notice: 'Message was successfully created.' }
