@@ -7,10 +7,16 @@
     "actiontext": "https://github.com/rails/actiontext",
     "activestorage": ">=5.2.1",
     "rails-ujs": ">=5.2.1",
-    "turbolinks": "5.1.1"
+    "turbolinks": "5.1.1",
+    "snyk": "^1.189.0"
   },
   "version": "0.1.0",
   "devDependencies": {
     "webpack-dev-server": "2.11.2"
-  }
+  },
+  "scripts": {
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }
